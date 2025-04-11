@@ -10,9 +10,8 @@ new device type definitions manually.
 If you would like to contribute to this library, please read through our [contributing guide](CONTRIBUTING.md) before
 submitting content.
 
-**Note: As of March 2023 Netbox-Device-Type-Library-Import has been brought into the NetBox Community Organization. We will work to get this fully supported soon.**
-If you would like to automate the import of these devicetype template files, there is a NetBox Community ~~**community based**~~ python script
-that will check for duplicates, allow you to selectively import vendors, etc. available here [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import). ~~**Note**: This is not related to NetBox in any official way and you will not get support for it here.~~
+If you would like to automate the import of these devicetype template files, there is a NetBox Community python script
+that will check for duplicates, allow you to selectively import vendors, etc. available here [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import).
 
 ## Device Type Definitions
 
@@ -26,6 +25,9 @@ Each definition **must** include at minimum the following fields:
   manufacturer. All slugs should have the manufacturers name prepended to it with a dash, please see the example below.
   - Type: String
   - Pattern: `"^[-a-zA-Z0-9_]+$"`. Must match the following characters: `-`, `_`, Uppercase or Lowercase `a` to `z`, Numbers `0` to `9`.
+- `u_height`: The height of the device type in rack units. Increments of 0.5U are supported. (**Default: 1**)
+  - Type: number (minimum of `0`, multiple of `0.5`)
+  - :test_tube: Example: `u_height: 12.5`
 
 :test_tube: Example:
 
@@ -40,9 +42,6 @@ The following fields may **optionally** be declared:
 - `part_number`: An alternative representation of the model number (e.g. a SKU). (**Default: None**)
   - Type: String
   - :test_tube: Example: `part_number: D109-C3`
-- `u_height`: The height of the device type in rack units. Increments of 0.5U are supported. (**Default: 1**)
-  - Type: number (minimum of `0`, multiple of `0.5`)
-  - :test_tube: Example: `u_height: 12.5`
 - `is_full_depth`: A boolean which indicates whether the device type consumes both the front and rear rack faces. (**Default: true**)
   - Type: Boolean
   - :test_tube: Example: `is_full_depth: false`
