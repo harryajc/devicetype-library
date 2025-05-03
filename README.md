@@ -24,10 +24,13 @@ Each definition **must** include at minimum the following fields:
 - `slug`: A URL-friendly representation of the model number. Like the model number, this must be unique per
   manufacturer. All slugs should have the manufacturers name prepended to it with a dash, please see the example below.
   - Type: String
-  - Pattern: `"^[-a-zA-Z0-9_]+$"`. Must match the following characters: `-`, `_`, Uppercase or Lowercase `a` to `z`, Numbers `0` to `9`.
+  - Pattern: `"^[-a-z0-9_]+$"`. Must match the following characters: `-`, Lowercase `a` to `z`, Numbers `0` to `9`.
 - `u_height`: The height of the device type in rack units. Increments of 0.5U are supported. (**Default: 1**)
   - Type: number (minimum of `0`, multiple of `0.5`)
   - :test_tube: Example: `u_height: 12.5`
+- `is_full_depth`: A boolean which indicates whether the device type consumes both the front and rear rack faces. (**Default: true**)
+  - Type: Boolean
+  - :test_tube: Example: `is_full_depth: false`
 
 :test_tube: Example:
 
@@ -42,9 +45,6 @@ The following fields may **optionally** be declared:
 - `part_number`: An alternative representation of the model number (e.g. a SKU). (**Default: None**)
   - Type: String
   - :test_tube: Example: `part_number: D109-C3`
-- `is_full_depth`: A boolean which indicates whether the device type consumes both the front and rear rack faces. (**Default: true**)
-  - Type: Boolean
-  - :test_tube: Example: `is_full_depth: false`
 - `airflow`: A declaration of the airflow pattern for the device. (**Default: None**)
   - Type: String
   - Options:
@@ -168,6 +168,8 @@ Interfaces in NetBox represent network interfaces used to exchange data with con
 - `label`: Label
 - `type`: Interface type slug (Array)
 - `mgmt_only`: A boolean which indicates whether this interface is used for management purposes only (default: false)
+- `poe_mode` : For if a device is POE powered (pd) or provides POE (pse)
+- `poe_type` : The classification of PoE transmission supported, for PoE-enabled interfaces.
 
 #### Front Ports
 
