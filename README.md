@@ -53,7 +53,11 @@ The following fields may **optionally** be declared:
     - `left-to-right`
     - `right-to-left`
     - `side-to-rear`
+    - `rear-to-side`
+    - `bottom-to-top`
+    - `top-to-bottom`
     - `passive`
+    - `mixed`
   - :test_tube: Example: `airflow: side-to-rear`
 - `front_image`: Indicates that this device has a front elevation image within the [elevation-images](elevation-images/) folder. (**Default: None**)
   - NOTE: The elevation images folder requires the same folder name as this device. The file name must also adhere to <VALUE_IN_SLUG>.front.<acceptable_format>
